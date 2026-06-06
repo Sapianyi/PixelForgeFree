@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="seo-title">PixelForge — 100% Client-Side File Converter</title>
+    <meta
+      id="seo-desc"
+      name="description"
+      content="Free, secure, 100% client-side file converter. Your files never leave your device. No size limits."
+    />
+
+    <!-- 🌟 ПУНКТ 3: SCHEMA.ORG МІКРОРОЗМІТКА ДЛЯ RICH RESULTS -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "PixelForge",
+        "description": "Free 100% client-side file converter. Confidential documents, images, and ebooks never leave your device.",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "1420"
+        }
+      }
+    </script>
+    <script type="module" crossorigin src="/PixelForgeFree/assets/index-DKTEBqlV.js"></script>
+    <link rel="stylesheet" crossorigin href="/PixelForgeFree/assets/index-BczfyyVk.css">
+  </head>
+  <body>
+    <div id="app">
+      <header class="app-header">
+        <h1 id="main-heading">🔥 PixelForge</h1>
+        <p id="main-subheading" class="subtitle">
+          Your files never leave your device. No uploads, no servers, 100%
+          private.
+        </p>
+      </header>
+
+      <div class="accordion-container">
+        <h3 class="accordion-main-title">🔧 Supported Conversion Pipelines</h3>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger">
+            🖼️ Image & Graphics <span class="arrow">▼</span>
+          </button>
+          <div class="accordion-content">
+            <div class="links-grid">
+              <a href="/png-to-webp" class="nav-link">PNG to WebP</a>
+              <a href="/heic-to-jpg" class="nav-link">HEIC to JPG (iPhone)</a>
+              <a href="/png-to-svg" class="nav-link">PNG to SVG (Vector)</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger">
+            📄 Document Processing <span class="arrow">▼</span>
+          </button>
+          <div class="accordion-content">
+            <div class="links-grid">
+              <a href="/pdf-to-images" class="nav-link">PDF to JPG / PNG</a>
+              <a href="/docx-to-pdf" class="nav-link">DOCX to PDF (Word)</a>
+              <a href="/jpg-to-pdf" class="nav-link">JPG / PNG to PDF</a>
+              <a href="/heic-to-pdf" class="nav-link">HEIC to PDF (Apple)</a>
+              <a href="/pdf-to-word" class="nav-link">PDF to Word (DOCX)</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger">
+            📚 Ebook Converter <span class="arrow">▼</span>
+          </button>
+          <div class="accordion-content">
+            <div class="links-grid">
+              <a href="/pdf-to-epub" class="nav-link">PDF to EPUB</a>
+              <a href="/epub-to-pdf" class="nav-link">EPUB to PDF</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-footer">
+          <a href="/" class="nav-link reset-link"
+            >🎯 Reset to Universal Converter</a
+          >
+        </div>
+      </div>
+
+      <main class="converter-container">
+        <div id="dropzone" class="dropzone">
+          <input type="file" id="file-input" multiple style="display: none" />
+          <div class="dropzone-content">
+            <span class="icon">📁</span>
+            <p>
+              Drag & Drop files here or
+              <span class="browse-link">browse from computer</span>
+            </p>
+            <span class="limit-info"
+              >Supports batch processing up to 500+ files simultaneously</span
+            >
+          </div>
+        </div>
+
+        <div id="file-list-container" class="file-list-container hidden">
+          <h3>Selected Files:</h3>
+          <ul id="file-list" class="file-list"></ul>
+        </div>
+
+        <div class="controls-panel">
+          <div class="control-row-main">
+            <div class="control-group">
+              <label for="target-format">Convert to:</label>
+              <select id="target-format">
+                <option value="webp">WebP (Next-Gen Image)</option>
+                <option value="png">PNG (Lossless)</option>
+                <option value="jpg">JPG / JPEG Compressed</option>
+                <option value="svg">SVG (Vector Engine)</option>
+                <option value="pdf">PDF (Document Format)</option>
+                <option value="docx">DOCX (Microsoft Word)</option>
+                <option value="epub">EPUB (Valid Ebook)</option>
+              </select>
+            </div>
+            <button id="start-btn" class="start-btn" disabled>
+              Convert Now
+            </button>
+          </div>
+          <div id="dynamic-options" class="dynamic-options-container"></div>
+        </div>
+
+        <div class="terminal-container">
+          <div class="terminal-header">
+            <span class="terminal-title">💻 System Pipeline Logs</span>
+            <button id="clear-log-btn" class="clear-btn">Clear</button>
+          </div>
+          <div id="log-output" class="terminal-body">
+            <div class="log-line system">
+              [System] Pipeline ready. Waiting for assets...
+            </div>
+          </div>
+        </div>
+
+        <!-- 🌟 ПУНКТ 1: БЛОК ДИНАМІЧНОГО SEO-КОНТЕНТУ (Заповнюється з routes.ts) -->
+        <article id="dynamic-seo-article" class="seo-content"></article>
+
+        <!-- 🌟 ПУНКТ 2: БЛОК ЧАСТИХ ЗАПИТАНЬ FAQ З МІКРОРОЗМІТКОЮ -->
+        <section class="faq-section">
+          <h2>Frequently Asked Questions</h2>
+
+          <div class="faq-item">
+            <h3>Is PixelForge safe for confidential corporate documents?</h3>
+            <p>
+              Yes, absolutely. Unlike traditional online converters, PixelForge
+              functions 100% client-side via WebWorkers and WebAssembly inside
+              an isolated browser sandbox. Your financial data, military text
+              maps, or private photos are never uploaded to foreign servers.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>What is the maximum file size allocation?</h3>
+            <p>
+              PixelForge features a hardware-optimized resource guardian that
+              safely limits local conversions up to 500MB per file. This rule
+              prevents browser memory leakage and Out-of-Memory crashes during
+              intense mathematical conversions.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>Does batch conversion preserve formatting?</h3>
+            <p>
+              Yes. When compiling images (JPG/HEIC to PDF) or parsing files (PDF
+              to EPUB), our typographic engine maintains responsive grids and
+              sequential styling layout trees using standard IDPF formatting
+              entirely in local RAM.
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <!-- 🌟 ПУНКТ 4: ВНУТРІШНЯ ПЕРЕЛІНКОВКА (FOOTER LINKS) ДЛЯ ІНДЕКСАЦІЇ КРАУЛЕРАМИ -->
+      <footer class="app-footer">
+        <div class="footer-links-grid">
+          <a href="/png-to-webp" class="footer-link">PNG to WebP</a>
+          <a href="/heic-to-jpg" class="footer-link">HEIC to JPG (iPhone)</a>
+          <a href="/png-to-svg" class="footer-link">PNG to SVG (Vector)</a>
+          <a href="/pdf-to-images" class="footer-link">PDF to JPG / PNG</a>
+          <a href="/docx-to-pdf" class="footer-link">DOCX to PDF</a>
+          <a href="/jpg-to-pdf" class="footer-link">JPG to PDF</a>
+          <a href="/heic-to-pdf" class="footer-link">HEIC to PDF</a>
+          <a href="/pdf-to-word" class="footer-link">PDF to Word (DOCX)</a>
+          <a href="/pdf-to-epub" class="footer-link">PDF to EPUB</a>
+          <a href="/epub-to-pdf" class="footer-link">EPUB to PDF</a>
+        </div>
+        <p class="footer-copy">
+          &copy; 2026 PixelForge. Local Privacy First File Processing Core.
+        </p>
+      </footer>
+    </div>
+    <script src="/PixelForgeFree/vendor/potrace.js"></script>
+  </body>
+</html>

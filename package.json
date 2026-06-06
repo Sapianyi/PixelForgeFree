@@ -1,0 +1,33 @@
+{
+  "name": "universal-forge",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "esbuild": "^0.28.0",
+    "gh-pages": "^6.3.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.0.12"
+  },
+  "dependencies": {
+    "@ffmpeg/core": "^0.11.0",
+    "@ffmpeg/core-st": "^0.11.1",
+    "@ffmpeg/ffmpeg": "^0.12.15",
+    "@ffmpeg/util": "^0.12.2",
+    "docx": "^9.7.1",
+    "docx-preview": "^0.3.7",
+    "fflate": "^0.8.3",
+    "heic-decode": "^2.1.0",
+    "heic2any": "^0.0.4",
+    "jspdf": "^4.2.1",
+    "pdfjs-dist": "^6.0.227"
+  }
+}

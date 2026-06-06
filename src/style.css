@@ -1,0 +1,579 @@
+:root {
+  /* Нова кінематографічна палітра */
+  --bg-dark: #09090b; /* Глибокий чорний вуглецевий колір */
+  --panel-bg: rgba(20, 20, 25, 0.7); /* Напівпрозоре загартоване скло */
+  --panel-solid: #141419;
+  --border-color: rgba(255, 255, 255, 0.08); /* Тонкі скляні межі */
+  --border-glow: #10b981; /* Смарагдовий лазерний неон для активних елементів */
+
+  --accent-color: #10b981; /* Переходимо з помаранчевого на Emerald Green */
+  --accent-hover: #059669;
+  --accent-glow: rgba(16, 185, 129, 0.15);
+
+  --text-main: #f4f4f5;
+  --text-muted: #71717a;
+  --terminal-bg: #030303;
+  --success: #10b981;
+  --error: #ef4444;
+  --font-mono: "JetBrains Mono", "Fira Code", "Courier New", monospace;
+}
+
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  background-color: var(--bg-dark);
+  /* Фоновий Sci-Fi металевий градієнт */
+  background-image:
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(16, 185, 129, 0.03) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(59, 130, 246, 0.02) 0%,
+      transparent 40%
+    );
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1rem;
+  min-height: 100vh;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  width: 100%;
+  max-width: 900px; /* Трохи розширимо для більшої солідності */
+}
+
+/* Хедер із неоновим відблиском */
+.app-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.app-header h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2.8rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #ffffff 30%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* 🔧 Скляний Акордеон Трубопроводів (Glassmorphism) */
+.accordion-container {
+  background: var(--panel-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.25rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.accordion-main-title {
+  margin: 0 0 1.25rem 0;
+  font-size: 0.85rem;
+  color: var(--accent-color);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.accordion-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.accordion-item:last-of-type {
+  border-bottom: none;
+}
+
+.accordion-trigger {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  text-align: left;
+  padding: 1.1rem 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion-trigger:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.02);
+  padding-left: 1rem; /* Ефект легкого зсування при наведенні */
+}
+
+.accordion-trigger .arrow {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  transition: transform 0.25s ease;
+}
+
+.accordion-item.active .accordion-trigger {
+  color: var(--accent-color);
+}
+
+.accordion-item.active .accordion-trigger .arrow {
+  transform: rotate(180deg);
+  color: var(--accent-color);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 500px;
+  padding: 0.5rem 0.5rem 1.25rem 0.5rem;
+}
+
+/* Космічна сітка лінків */
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.6rem;
+}
+
+.nav-link {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+  color: #d1d5db;
+  padding: 0.8rem 1.1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 400;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  border-color: var(--accent-color);
+  background: var(--accent-glow);
+  color: #fff;
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.1);
+  transform: translateY(-1px);
+}
+
+.accordion-footer {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.reset-link {
+  display: block;
+  border-style: dashed !important;
+  text-align: center;
+}
+
+/* 📁 Преміальна Дропзона */
+.dropzone {
+  background: var(--panel-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 4rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.dropzone:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.01);
+  transform: scale(0.995);
+}
+
+/* Стан коли файл занесено над дропзоною (Cyberpunk Trigger) */
+.dropzone.dragover {
+  border-color: var(--border-glow);
+  background: var(--accent-glow);
+  box-shadow: 0 0 32px rgba(16, 185, 129, 0.08);
+  border-style: solid;
+}
+
+.dropzone-content .icon {
+  font-size: 3.5rem;
+  display: block;
+  margin-bottom: 1.25rem;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+  transition: transform 0.2s ease;
+}
+
+.dropzone.dragover .dropzone-content .icon {
+  transform: translateY(-5px) scale(1.1);
+}
+
+.dropzone-content p {
+  font-size: 1.05rem;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.browse-link {
+  color: var(--accent-color);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.browse-link:hover {
+  text-decoration: underline;
+}
+
+.limit-info {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+}
+
+/* 🎛️ Контрольна Панель Параметрів */
+.controls-panel {
+  display: flex;
+  flex-direction: column; /* Робимо блоком для красивого стеку опцій */
+  gap: 1.25rem;
+  background: var(--panel-solid);
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.control-row-main {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex-grow: 1;
+}
+
+.control-group label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+select {
+  background: #09090b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-main);
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+select:hover,
+select:focus {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* 🔥 Головна кнопка запуску лазера */
+.start-btn {
+  background: var(--accent-color);
+  color: #052e16; /* Глибокий темно-зелений для крутого контрасту з неоном */
+  font-weight: 700;
+  border: none;
+  padding: 0.85rem 2.5rem;
+  font-size: 0.95rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.2);
+  white-space: nowrap;
+}
+
+.start-btn:hover:not(:disabled) {
+  background: #34d399;
+  box-shadow: 0 0 24px rgba(16, 185, 129, 0.4);
+  transform: translateY(-1px);
+}
+
+.start-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.start-btn:disabled {
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.2);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ⚙️ Контейнер динамічних опцій (повзунки, селектори) */
+.dynamic-options-container {
+  width: 100%;
+}
+
+/* 💻 Термінал Системних Логів */
+.terminal-container {
+  background: var(--terminal-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: inset 0 4px 24px rgba(0, 0, 0, 0.9);
+}
+
+.terminal-header {
+  background: #0b0b0d;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.terminal-title {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.clear-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--text-muted);
+  padding: 4px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  transition: all 0.2s;
+}
+
+.clear-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.terminal-body {
+  padding: 1.25rem;
+  height: 200px;
+  overflow-y: auto;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.log-line {
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Стилі тексту всередині логів */
+.log-line span {
+  flex-grow: 1;
+}
+
+.log-line.system {
+  color: #38bdf8;
+}
+.log-line.pipeline {
+  color: #fbbf24;
+}
+.log-line.success {
+  color: #34d399;
+}
+
+/* 📄 Модернізований Список Файлів */
+.file-list-container {
+  background: var(--panel-solid);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.25rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.file-list-container h3 {
+  margin: 0 0 1rem 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.file-item {
+  padding: 0.75rem 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+/* Повзунки відповідей (Range inputs) */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #09090b;
+  height: 6px;
+  border-radius: 3px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* 🌟 СТИЛІЗАЦІЯ SEO-КОНТЕНТУ ТА FAQ */
+.seo-content {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: var(--panel-solid);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  line-height: 1.7;
+}
+
+.seo-content h2 {
+  font-size: 1.4rem;
+  color: var(--accent-color);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.seo-content p {
+  color: #d1d5db;
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+  text-align: justify;
+}
+
+.faq-section {
+  margin-top: 2.5rem;
+  padding: 1rem 0;
+}
+
+.faq-section h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  background: linear-gradient(135deg, #ffffff, #a1a1aa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.faq-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  padding: 1.25rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  transition: border-color 0.2s;
+}
+
+.faq-item:hover {
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.faq-item h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.05rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+.faq-item p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* 🌟 ФУТЕР ДЛЯ КРАУЛЕРІВ GOOGLE */
+.app-footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.footer-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-link {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: color 0.2s;
+  font-family: var(--font-mono);
+}
+
+.footer-link:hover {
+  color: var(--accent-color);
+}
+
+.footer-copy {
+  font-size: 0.78rem;
+  color: #3f3f46;
+  font-family: var(--font-mono);
+  margin: 0;
+}
